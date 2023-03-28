@@ -1,0 +1,66 @@
+<form [formGroup]="connectionForm">
+  <section class="grid grid-cols-6 p-4 pt-8 gap-x-4">
+    <!-- server/ protocol -->
+    <mat-form-field appearance="fill">
+      <mat-label>server/ protocol</mat-label>
+      <mat-select formControlName="serverProtocol">
+        <mat-option *ngFor="let srvp of serverProtocols" [value]="srvp">{{
+          srvp
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- server name -->
+    <mat-form-field appearance="fill" class="col-span-2">
+      <mat-label>server name</mat-label>
+      <input type="text" matInput formControlName="serverName" />
+    </mat-form-field>
+    <!-- database -->
+    <mat-form-field appearance="fill" class="col-span-3">
+      <mat-label>database</mat-label>
+      <input type="text" matInput formControlName="database" />
+    </mat-form-field>
+    <!-- port -->
+    <mat-form-field appearance="fill">
+      <mat-label>port</mat-label>
+      <input type="text" matInput formControlName="port" />
+    </mat-form-field>
+    <!-- server-version -->
+    <mat-form-field appearance="fill">
+      <mat-label>server version</mat-label>
+      <mat-select formControlName="serverVersion">
+        <mat-option *ngFor="let ver of serverVersions" [value]="ver">{{
+          ver
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- user -->
+    <mat-form-field appearance="fill">
+      <mat-label>user</mat-label>
+      <input type="text" matInput formControlName="user" />
+    </mat-form-field>
+    <!-- password -->
+    <mat-form-field appearance="fill">
+      <mat-label>password</mat-label>
+      <input type="password" matInput formControlName="password" />
+    </mat-form-field>
+    <!-- role -->
+    <mat-form-field appearance="fill">
+      <mat-label>role</mat-label>
+      <input type="text" matInput formControlName="role" />
+    </mat-form-field>
+    <!-- charset -->
+    <mat-form-field appearance="fill">
+      <mat-label>charset</mat-label>
+      <mat-select formControlName="charset">
+        <mat-option
+          *ngFor="let charset of charsets"
+          [value]="charset.split('')[0]"
+          >{{ charset.split(' ')[0] }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </section>
+</form>
+<section class="flex justify-end pb-4 pr-4">
+  <button mat-stroked-button color="primary">Continue</button>
+</section>
