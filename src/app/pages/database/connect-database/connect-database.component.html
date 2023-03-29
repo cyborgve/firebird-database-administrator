@@ -1,0 +1,98 @@
+<cdk-accordion-item
+  #accordionItem0="cdkAccordionItem"
+  role="button"
+  tabindex="0"
+  [attr.id]="'accordion-header-' + '0'"
+  [attr.aria-expanded]="accordionItem0.expanded"
+  [attr.aria-controls]="'accordion-body' + '0'"
+  class="block">
+  <section
+    (click)="accordionItem0.toggle()"
+    class="flex content-center justify-between p-4 font-medium text-primary bg-primary bg-opacity-10 hover:bg-primary hover:bg-opacity-40">
+    <article>Connect to database</article>
+    <article>
+      Click to {{ accordionItem0.expanded ? 'close ' : 'open' }}
+    </article>
+  </section>
+  <article
+    role="region"
+    [style.display]="accordionItem0.expanded ? '' : 'none'"
+    [attr.id]="'accordion-body-' + '0'"
+    [attr.aria-labelledby]="'accordion-header-' + '0'">
+    <form [formGroup]="databaseForm">
+      <section class="grid grid-cols-1 p-4">
+        <article class="grid grid-cols-7 gap-x-4">
+          <!-- version -->
+          <mat-form-field appearance="fill">
+            <mat-label>Version</mat-label>
+            <mat-select formControlName="version">
+              <mat-option *ngFor="let version of versions" [value]="version">{{
+                version
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- protocol -->
+          <mat-form-field appearance="fill">
+            <mat-label>Protocol</mat-label>
+            <mat-select formControlName="protocol">
+              <mat-option
+                *ngFor="let protocol of protocols"
+                [value]="protocol"
+                >{{ protocol }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <!-- host -->
+          <mat-form-field appearance="fill" class="col-span-2">
+            <mat-label>Host</mat-label>
+            <input type="text" matInput formControlName="host" />
+          </mat-form-field>
+          <!-- port -->
+          <mat-form-field appearance="fill">
+            <mat-label>Port</mat-label>
+            <input type="number" matInput formControlName="port" />
+          </mat-form-field>
+          <!-- database -->
+          <mat-form-field appearance="fill" class="col-span-2">
+            <mat-label>Database</mat-label>
+            <input type="text" matInput formControlName="database" />
+          </mat-form-field>
+        </article>
+        <article class="grid grid-cols-4 gap-x-4">
+          <!-- user -->
+          <mat-form-field appearance="fill">
+            <mat-label>User</mat-label>
+            <input type="text" matInput formControlName="user" />
+          </mat-form-field>
+          <!-- password -->
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password" />
+          </mat-form-field>
+          <!-- role -->
+          <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <input type="text" matInput formControlName="role" />
+          </mat-form-field>
+          <!-- charset -->
+          <mat-form-field appearance="fill">
+            <mat-label>Charset</mat-label>
+            <mat-select formControlName="charset">
+              <mat-option *ngFor="let charset of charsets" [value]="charset">{{
+                charset
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </article>
+      </section>
+      <section class="flex justify-end pb-4 pr-4 gap-x-4">
+        <button mat-stroked-button color="primary" class="w-1/12">
+          <mat-icon>power_off</mat-icon>Disconnect
+        </button>
+        <button mat-stroked-button color="primary" class="w-1/12">
+          <mat-icon>power</mat-icon>Connect
+        </button>
+      </section>
+    </form>
+  </article>
+</cdk-accordion-item>
