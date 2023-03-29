@@ -13,13 +13,13 @@ import {
 } from '@angular/forms';
 import { SERVER_PROTOCOLS } from '@core/constants/server-protocols';
 import { SERVER_VERSIONS } from '@core/constants/server-versions';
-import { CHARSETS } from '@core/constants/chatsets';
+import { CHARSETS } from '@core/constants/charsets';
 
 @Component({
-  selector: 'app-connect-database',
+  selector: 'app-database-connect',
   standalone: true,
-  templateUrl: './connect-database.component.html',
-  styleUrls: ['./connect-database.component.scss'],
+  templateUrl: './database-connect.component.html',
+  styleUrls: ['./database-connect.component.scss'],
   imports: [
     CommonModule,
     MatInputModule,
@@ -30,7 +30,7 @@ import { CHARSETS } from '@core/constants/chatsets';
     ReactiveFormsModule,
   ],
 })
-export class ConnectDatabaseComponent {
+export class DatabaseConnectComponent {
   private _formBuilder = inject(FormBuilder);
   databaseForm: FormGroup;
   protocols = SERVER_PROTOCOLS;

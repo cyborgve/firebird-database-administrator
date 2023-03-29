@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { ConnectDatabaseComponent } from './connect-database/connect-database.component';
-import { CreateDatabaseComponent } from './create-database/create-database.component';
-import { DeleteDatabaseComponent } from './delete-database/delete-database.component';
-import { MetadataDatabaseComponent } from './metadata-database/metadata-database.component';
+import { DatabaseConnectComponent } from './database-connect/database-connect.component';
+import { DatabaseCreateComponent } from './database-create/database-create.component';
+import { DatabaseDropComponent } from './database-drop/database-drop.component';
+import { DatabaseMetadataComponent } from './database-metadata/database-metadata.component';
 
 @Component({
   selector: 'app-database',
@@ -12,10 +12,10 @@ import { MetadataDatabaseComponent } from './metadata-database/metadata-database
   styleUrls: ['./database.component.scss'],
   imports: [
     CdkAccordionModule,
-    ConnectDatabaseComponent,
-    CreateDatabaseComponent,
-    DeleteDatabaseComponent,
-    MetadataDatabaseComponent,
+    DatabaseConnectComponent,
+    DatabaseCreateComponent,
+    DatabaseDropComponent,
+    DatabaseMetadataComponent,
   ],
 })
 export class DatabaseComponent {}

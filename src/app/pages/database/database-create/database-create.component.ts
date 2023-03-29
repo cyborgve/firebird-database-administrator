@@ -16,10 +16,10 @@ import { SERVER_VERSIONS } from '@core/constants/server-versions';
 import { CHARSETS } from '@core/constants/charsets';
 
 @Component({
-  selector: 'app-metadata-database',
+  selector: 'app-database-create',
   standalone: true,
-  templateUrl: './metadata-database.component.html',
-  styleUrls: ['./metadata-database.component.scss'],
+  templateUrl: './database-create.component.html',
+  styleUrls: ['./database-create.component.scss'],
   imports: [
     CommonModule,
     MatInputModule,
@@ -30,7 +30,7 @@ import { CHARSETS } from '@core/constants/charsets';
     ReactiveFormsModule,
   ],
 })
-export class MetadataDatabaseComponent {
+export class DatabaseCreateComponent {
   private _formBuilder = inject(FormBuilder);
   databaseForm: FormGroup;
   protocols = SERVER_PROTOCOLS;

@@ -13,13 +13,11 @@ import {
 } from '@angular/forms';
 import { SERVER_PROTOCOLS } from '@core/constants/server-protocols';
 import { SERVER_VERSIONS } from '@core/constants/server-versions';
-import { CHARSETS } from '@core/constants/chatsets';
+import { CHARSETS } from '@core/constants/charsets';
 
 @Component({
-  selector: 'app-create-database',
+  selector: 'app-database-metadata',
   standalone: true,
-  templateUrl: './create-database.component.html',
-  styleUrls: ['./create-database.component.scss'],
   imports: [
     CommonModule,
     MatInputModule,
@@ -29,8 +27,10 @@ import { CHARSETS } from '@core/constants/chatsets';
     CdkAccordionModule,
     ReactiveFormsModule,
   ],
+  templateUrl: './database-metadata.component.html',
+  styleUrls: ['./database-metadata.component.scss'],
 })
-export class CreateDatabaseComponent {
+export class DatabaseMetadataComponent {
   private _formBuilder = inject(FormBuilder);
   databaseForm: FormGroup;
   protocols = SERVER_PROTOCOLS;

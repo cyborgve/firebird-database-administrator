@@ -13,13 +13,13 @@ import {
 } from '@angular/forms';
 import { SERVER_PROTOCOLS } from '@core/constants/server-protocols';
 import { SERVER_VERSIONS } from '@core/constants/server-versions';
-import { CHARSETS } from '@core/constants/chatsets';
+import { CHARSETS } from '@core/constants/charsets';
 
 @Component({
-  selector: 'app-delete-database',
+  selector: 'app-database-drop',
   standalone: true,
-  templateUrl: './delete-database.component.html',
-  styleUrls: ['./delete-database.component.scss'],
+  templateUrl: './database-drop.component.html',
+  styleUrls: ['./database-drop.component.scss'],
   imports: [
     CommonModule,
     MatInputModule,
@@ -30,7 +30,7 @@ import { CHARSETS } from '@core/constants/chatsets';
     ReactiveFormsModule,
   ],
 })
-export class DeleteDatabaseComponent {
+export class DatabaseDropComponent {
   private _formBuilder = inject(FormBuilder);
   databaseForm: FormGroup;
   protocols = SERVER_PROTOCOLS;
