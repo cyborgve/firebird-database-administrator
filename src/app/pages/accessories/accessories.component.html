@@ -1,1 +1,23 @@
-<p>accessories works!</p>
+<mat-tab-group class="p-4">
+  <mat-tab
+    *ngFor="let accessory of accessories"
+    [label]="accessory | titlecase">
+    <ng-container [ngSwitch]="accessory">
+      <app-accessory-domains *ngSwitchCase="'domains'"></app-accessory-domains>
+      <app-accessory-exceptions
+        *ngSwitchCase="'exceptions'"></app-accessory-exceptions>
+      <app-accessory-generators
+        *ngSwitchCase="'generators'"></app-accessory-generators>
+      <app-accessory-indexes *ngSwitchCase="'indexes'"></app-accessory-indexes>
+      <app-accessory-store-procedures
+        *ngSwitchCase="'store procedures'"></app-accessory-store-procedures>
+      <app-accessory-triggers
+        *ngSwitchCase="'triggers'"></app-accessory-triggers>
+      <app-accessory-user-defined-functions
+        *ngSwitchCase="
+          'user defined functions'
+        "></app-accessory-user-defined-functions>
+      <app-accessory-views *ngSwitchCase="'views'"></app-accessory-views>
+    </ng-container>
+  </mat-tab>
+</mat-tab-group>
