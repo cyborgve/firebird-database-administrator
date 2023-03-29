@@ -1,38 +1,21 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    #drawer
-    class="sidenav"
-    fixedInViewport
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="(isHandset$ | async) === false">
-    <mat-toolbar
-      ><img
-        src="../assets/svg/ds-firebird-logo.svg"
-        alt="ds-firebird-logo"
-        height="60px"
-        width="60px"
-        class="p-2"
-    /></mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/">Connection</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span class="text-3xl font-medium"
-        >{{ title | titlecase
-        }}<span class="text-sm font-light"> v{{ version }}</span></span
-      >
-    </mat-toolbar>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<mat-toolbar color="primary">
+  <span class="text-2xl font-medium"
+    >{{ title | titlecase
+    }}<span class="text-xs font-light"> v{{ version }}</span></span
+  >
+  <span class="spacer"></span>
+  <section class="flex items-center text-lg gap-x-3">
+    <button *ngFor="let item of menu" [routerLink]="item.route">
+      {{ item.label }}
+    </button>
+  </section>
+  <section class="p-4">
+    <mat-icon class="text-green-500" *ngIf="conected; else powerOff"
+      >power</mat-icon
+    >
+    <ng-template #powerOff
+      ><mat-icon class="text-gray-100">power_off</mat-icon></ng-template
+    >
+  </section>
+</mat-toolbar>
+<router-outlet></router-outlet>

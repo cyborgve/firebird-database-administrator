@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConnectionComponent } from './connection.component';
+import { AccessoriesComponent } from './accessories.component';
 
-describe('ConnectionComponent', () => {
-  let component: ConnectionComponent;
-  let fixture: ComponentFixture<ConnectionComponent>;
+describe('AccessoriesComponent', () => {
+  let component: AccessoriesComponent;
+  let fixture: ComponentFixture<AccessoriesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConnectionComponent],
+      imports: [AccessoriesComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ConnectionComponent);
+    fixture = TestBed.createComponent(AccessoriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

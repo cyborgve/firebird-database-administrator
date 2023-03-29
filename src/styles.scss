@@ -12,7 +12,7 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $firebird-admin-primary: mat.define-palette(mat.$orange-palette, 900);
-$firebird-admin-accent: mat.define-palette(mat.$indigo-palette, 600, 700, 800);
+$firebird-admin-accent: mat.define-palette(mat.$indigo-palette, 700, 800, 900);
 
 // The warn palette is optional (defaults to red).
 $firebird-admin-warn: mat.define-palette(mat.$red-palette, 700);
@@ -49,3 +49,7 @@ body {
 @tailwind utilities;
 
 /* You can add global styles to this file, and also import other style files */
+
+.spacer {
+  flex: 1 1 auto;
+}
