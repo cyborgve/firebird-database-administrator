@@ -1,1 +1,10 @@
-<p>tables works!</p>
+<section class="p-4 text-end">
+  <span class="pr-4 text-2xl italic text-primary">Tables</span>
+  <mat-button-toggle-group>
+    <mat-button-toggle
+      *ngFor="let operation of operations"
+      [value]="operation"
+      >{{ operation | titlecase }}</mat-button-toggle
+    >
+  </mat-button-toggle-group>
+</section>
