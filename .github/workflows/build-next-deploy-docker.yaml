@@ -24,7 +24,7 @@ jobs:
       - name: Publish Docker 🚀
         uses: elgohr/Publish-Docker-Github-Action@v5
         with:
-          name: cyborgve/inventory-system-frontend
+          name: cyborgve/firebird-database-administrator
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           tags: 'next'
