@@ -2,6 +2,13 @@ import { Routes } from '@angular/router';
 
 export const appRoutes: Routes = [
   {
+    path: '',
+    loadComponent: () =>
+      import('@pages/analitics/analitics.component').then(
+        c => c.AnaliticsComponent
+      ),
+  },
+  {
     path: 'database',
     loadComponent: () =>
       import('@pages/database/database.component').then(
