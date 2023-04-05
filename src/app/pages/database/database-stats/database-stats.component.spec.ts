@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatabaseDropComponent } from './database-drop.component';
+import { DatabaseStatsComponent } from './database-stats.component';
 
-describe('DatabaseDropComponent', () => {
-  let component: DatabaseDropComponent;
-  let fixture: ComponentFixture<DatabaseDropComponent>;
+describe('DatabaseStatsComponent', () => {
+  let component: DatabaseStatsComponent;
+  let fixture: ComponentFixture<DatabaseStatsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DatabaseDropComponent],
+      imports: [DatabaseStatsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DatabaseDropComponent);
+    fixture = TestBed.createComponent(DatabaseStatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

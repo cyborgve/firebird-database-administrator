@@ -1,56 +1,74 @@
-import { Component, inject } from '@angular/core';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { SERVER_PROTOCOLS } from '@core/constants/server-protocols';
-import { SERVER_VERSIONS } from '@core/constants/server-versions';
-import { CHARSETS } from '@core/constants/charsets';
+  MatTreeFlatDataSource,
+  MatTreeFlattener,
+  MatTreeModule,
+} from '@angular/material/tree';
+import { FlatNode } from '@core/models/flat-node';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+type FlatNodePick = Pick<FlatNode, 'name'>;
+interface FlatNodeExp extends FlatNodePick {
+  children?: FlatNodeExp[];
+}
+type FlatNodeFull = FlatNode & FlatNodeExp;
+type FlatNodeFixed = Omit<FlatNodeFull, 'isExpanded'>;
 
 @Component({
   selector: 'app-database-metadata',
   standalone: true,
   imports: [
     CommonModule,
-    MatInputModule,
-    MatSelectModule,
+    CdkAccordionModule,
+    MatTreeModule,
     MatIconModule,
     MatButtonModule,
-    CdkAccordionModule,
-    ReactiveFormsModule,
   ],
   templateUrl: './database-metadata.component.html',
   styleUrls: ['./database-metadata.component.scss'],
 })
 export class DatabaseMetadataComponent {
-  private _formBuilder = inject(FormBuilder);
-  databaseForm: FormGroup;
-  protocols = SERVER_PROTOCOLS;
-  versions = SERVER_VERSIONS;
-  charsets = CHARSETS.map(c => c.split(' ')[0]).sort();
+  treeData: FlatNodeExp[] = [
+    { name: 'domains' },
+    { name: 'tables' },
+    { name: 'views' },
+    { name: 'triggers' },
+    { name: 'generators' },
+    { name: 'exceptions' },
+    { name: 'store procedures' },
+    { name: 'user defined functions' },
+  ];
+
+  _trasformer = (fnode: FlatNodeExp, level: number) => {
+    return <FlatNodeFixed>{
+      name: fnode.name,
+      expandable: (!!fnode && fnode.children?.length) || 0 > 0,
+      level: level,
+      children: fnode.children,
+    };
+  };
+
+  treeControl = new FlatTreeControl<FlatNodeFixed>(
+    node => node.level,
+    node => node.expandable
+  );
+
+  treeFlattener = new MatTreeFlattener(
+    this._trasformer,
+    node => node.level,
+    node => node.expandable,
+    node => node.children
+  );
+
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   constructor() {
-    this.databaseForm = this._formBuilder.group({
-      protocol: ['Local, Loopback', Validators.required],
-      host: ['127.0.0.1', Validators.required],
-      port: [3050, Validators.required],
-      database: ['/firebird/data/inventory-system.fdb', Validators.required],
-      user: ['SYSDBA', Validators.required],
-      password: ['masterkey', Validators.required],
-      role: ['ADMIN'],
-      charset: [this.charsets.find(c => c.includes('UTF-8'))],
-      version: [
-        this.versions.find(v => v.includes('4.0')),
-        Validators.required,
-      ],
-    });
+    this.dataSource.data = this.treeData;
   }
+
+  hasChild = (_: number, node: FlatNodeFixed) => node.expandable;
 }

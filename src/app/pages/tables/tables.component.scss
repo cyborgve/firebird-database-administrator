@@ -9,4 +9,10 @@ mat-button-toggle:hover {
 
 mat-button-toggle {
   color: #e65100 !important;
+  border-top: 1px solid #e65100;
+  border-bottom: 1px solid #e65100;
+  border-right: 1px solid #e65100;
+}
+mat-button-toggle-group {
+  border-left: 1px solid #e65100;
 }

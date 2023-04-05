@@ -1,0 +1,57 @@
+<table cdk-table [dataSource]="dataSource">
+  <!-- name -->
+  <ng-container cdkColumnDef="name">
+    <th cdk-header-cell *cdkHeaderCellDef>Name</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.name }}</td>
+  </ng-container>
+  <!-- type -->
+  <ng-container cdkColumnDef="type">
+    <th cdk-header-cell *cdkHeaderCellDef>Type</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.type }}</td>
+  </ng-container>
+  <!-- encoding -->
+  <ng-container cdkColumnDef="encoding">
+    <th cdk-header-cell *cdkHeaderCellDef>Charset</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.encoding }}</td>
+  </ng-container>
+  <!-- collate -->
+  <ng-container cdkColumnDef="collate">
+    <th cdk-header-cell *cdkHeaderCellDef>Collate</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.collate }}</td>
+  </ng-container>
+  <!-- computed -->
+  <ng-container cdkColumnDef="computed">
+    <th cdk-header-cell *cdkHeaderCellDef>Computed</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.computed }}</td>
+  </ng-container>
+  <!-- default -->
+  <ng-container cdkColumnDef="default">
+    <th cdk-header-cell *cdkHeaderCellDef>Default</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.default }}</td>
+  </ng-container>
+  <!-- nullable -->
+  <ng-container cdkColumnDef="nullable">
+    <th cdk-header-cell *cdkHeaderCellDef>Nullable</th>
+    <td cdk-cell *cdkCellDef="let row">{{ !row.nullable }}</td>
+  </ng-container>
+  <!-- check -->
+  <ng-container cdkColumnDef="check">
+    <th cdk-header-cell *cdkHeaderCellDef>Check</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.check }}</td>
+  </ng-container>
+  <!-- unique -->
+  <ng-container cdkColumnDef="unique">
+    <th cdk-header-cell *cdkHeaderCellDef>Unique</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.unique }}</td>
+  </ng-container>
+  <!-- primary -->
+  <ng-container cdkColumnDef="primary">
+    <th cdk-header-cell *cdkHeaderCellDef>Primary</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.primary }}</td>
+  </ng-container>
+  <!-- foreign -->
+  <ng-container cdkColumnDef="foreign">
+    <th cdk-header-cell *cdkHeaderCellDef>Foreign</th>
+    <td cdk-cell *cdkCellDef="let row">{{ row.foreign }}</td>
+  </ng-container>
+</table>

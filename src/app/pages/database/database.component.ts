@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { DatabaseConnectComponent } from './database-connect/database-connect.component';
-import { DatabaseCreateComponent } from './database-create/database-create.component';
-import { DatabaseDropComponent } from './database-drop/database-drop.component';
+import { DatabaseInitialComponent } from './database-initial/database-initial.component';
 import { DatabaseMetadataComponent } from './database-metadata/database-metadata.component';
+import { DatabaseStatsComponent } from './database-stats/database-stats.component';
 
 @Component({
   selector: 'app-database',
@@ -12,10 +11,9 @@ import { DatabaseMetadataComponent } from './database-metadata/database-metadata
   styleUrls: ['./database.component.scss'],
   imports: [
     CdkAccordionModule,
-    DatabaseConnectComponent,
-    DatabaseCreateComponent,
-    DatabaseDropComponent,
+    DatabaseInitialComponent,
     DatabaseMetadataComponent,
+    DatabaseStatsComponent,
   ],
 })
 export class DatabaseComponent {}

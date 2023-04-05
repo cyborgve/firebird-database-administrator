@@ -11,15 +11,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SERVER_PROTOCOLS } from '@core/constants/server-protocols';
 import { SERVER_VERSIONS } from '@core/constants/server-versions';
 import { CHARSETS } from '@core/constants/charsets';
 
 @Component({
-  selector: 'app-database-drop',
+  selector: 'app-database-initial',
   standalone: true,
-  templateUrl: './database-drop.component.html',
-  styleUrls: ['./database-drop.component.scss'],
+  templateUrl: './database-initial.component.html',
+  styleUrls: ['./database-initial.component.scss'],
   imports: [
     CommonModule,
     MatInputModule,
@@ -28,9 +29,10 @@ import { CHARSETS } from '@core/constants/charsets';
     MatButtonModule,
     CdkAccordionModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
   ],
 })
-export class DatabaseDropComponent {
+export class DatabaseInitialComponent {
   private _formBuilder = inject(FormBuilder);
   databaseForm: FormGroup;
   protocols = SERVER_PROTOCOLS;
@@ -46,11 +48,19 @@ export class DatabaseDropComponent {
       user: ['SYSDBA', Validators.required],
       password: ['masterkey', Validators.required],
       role: ['ADMIN'],
-      charset: [this.charsets.find(c => c.includes('UTF-8'))],
+      encoding: [this.charsets.find(c => c.includes('UTF-8'))],
       version: [
         this.versions.find(v => v.includes('4.0')),
         Validators.required,
       ],
+      lowercase_keys: [false], // set to true to lowercase keys
+      pageSize: [4096], // default when creating database\
+      retryConnectionInterval: [1000], // reconnect interval in case of connection drop
+      blobAsText: [false], // set to true to get blob as text, only affects blob subtype 1
     });
   }
+
+  connect() {}
+
+  disconnect() {}
 }

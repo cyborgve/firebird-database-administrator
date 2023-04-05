@@ -1,22 +1,24 @@
 <cdk-accordion-item
-  #accordionItem1="cdkAccordionItem"
+  #accordionItem0="cdkAccordionItem"
   role="button"
-  tabindex="1"
-  [attr.id]="'accordion-header-' + '1'"
-  [attr.aria-expanded]="accordionItem1.expanded"
-  [attr.aria-controls]="'accordion-body' + '1'"
+  tabindex="0"
+  [attr.id]="'accordion-header-' + '0'"
+  [attr.aria-expanded]="accordionItem0.expanded"
+  [attr.aria-controls]="'accordion-body' + '0'"
   class="block">
   <section
-    (click)="accordionItem1.toggle()"
-    class="flex content-center justify-between p-4 font-medium text-primary bg-primary bg-opacity-10 hover:bg-primary hover:bg-opacity-40">
-    <article>Create database</article>
-    <article>Click to {{ accordionItem1.expanded ? 'close' : 'open' }}</article>
+    (click)="accordionItem0.toggle()"
+    class="flex content-center justify-between p-4 font-medium text-accent bg-primary bg-opacity-10 hover:bg-primary hover:bg-opacity-40">
+    <article>Database Initial</article>
+    <article>
+      Click to {{ accordionItem0.expanded ? 'close ' : 'open' }}
+    </article>
   </section>
   <article
     role="region"
-    [style.display]="accordionItem1.expanded ? '' : 'none'"
-    [attr.id]="'accordion-body-' + '1'"
-    [attr.aria-labelledby]="'accordion-header-' + '1'">
+    [style.display]="accordionItem0.expanded ? '' : 'none'"
+    [attr.id]="'accordion-body-' + '0'"
+    [attr.aria-labelledby]="'accordion-header-' + '0'">
     <form [formGroup]="databaseForm">
       <section class="grid grid-cols-1 p-4">
         <article class="grid grid-cols-7 gap-x-4">
@@ -56,7 +58,7 @@
             <input type="text" matInput formControlName="database" />
           </mat-form-field>
         </article>
-        <article class="grid grid-cols-4 gap-x-4">
+        <article class="grid grid-cols-7 gap-x-4">
           <!-- user -->
           <mat-form-field appearance="fill">
             <mat-label>User</mat-label>
@@ -75,18 +77,46 @@
           <!-- charset -->
           <mat-form-field appearance="fill">
             <mat-label>Charset</mat-label>
-            <mat-select formControlName="charset">
+            <mat-select formControlName="encoding">
               <mat-option *ngFor="let charset of charsets" [value]="charset">{{
                 charset
               }}</mat-option>
             </mat-select>
           </mat-form-field>
+          <mat-form-field>
+            <mat-label>Page Size</mat-label>
+            <input type="number" matInput formControlName="pageSize" />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Retry Connection Interval</mat-label>
+            <input
+              type="number"
+              matInput
+              formControlName="retryConnectionInterval" />
+          </mat-form-field>
+          <article>
+            <mat-slide-toggle formControlName="lowercase_keys" color="primary"
+              >Lowercase Keys</mat-slide-toggle
+            >
+            <mat-slide-toggle formControlName="blobAsText" color="primary"
+              >Blob as Text</mat-slide-toggle
+            >
+          </article>
         </article>
       </section>
-      <section class="flex justify-end pb-4 pr-4 gap-x-4">
-        <button mat-stroked-button color="primary" class="w-1/12">Clean</button>
-        <button mat-stroked-button color="primary" class="w-1/12">
-          Create
+      <section class="flex px-4 pb-4 gap-x-4">
+        <button type="button" mat-stroked-button color="accent">
+          <mat-icon>add</mat-icon>Create
+        </button>
+        <button type="button" mat-stroked-button color="accent">
+          <mat-icon>delete</mat-icon>Drop
+        </button>
+        <span class="spacer"></span>
+        <button mat-stroked-button color="accent" (click)="disconnect()">
+          <mat-icon>power_off</mat-icon>Disconnect
+        </button>
+        <button mat-stroked-button color="accent" (click)="connect()">
+          <mat-icon>power</mat-icon>Connect
         </button>
       </section>
     </form>

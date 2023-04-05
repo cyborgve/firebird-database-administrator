@@ -1,11 +1,6 @@
 import { MenuItem } from './../models/menu-item';
 export const MENU: MenuItem[] = [
   {
-    label: 'Analitics',
-    route: '/',
-    icon: 'home',
-  },
-  {
     label: 'Database',
     route: '/database',
     icon: 'storage',

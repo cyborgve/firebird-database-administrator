@@ -1,0 +1,112 @@
+<cdk-accordion-item
+  #accordionItem1="cdkAccordionItem"
+  role="button"
+  tabindex="1"
+  [attr.id]="'accordion-header-' + '1'"
+  [attr.aria-expanded]="accordionItem1.expanded"
+  [attr.aria-controls]="'accordion-body' + '1'"
+  class="block">
+  <section
+    (click)="accordionItem1.toggle()"
+    class="flex content-center justify-between p-4 font-medium text-accent bg-primary bg-opacity-10 hover:bg-primary hover:bg-opacity-40">
+    <article>Database Stats</article>
+    <article>
+      Click to {{ accordionItem1.expanded ? 'close ' : 'open' }}
+    </article>
+  </section>
+  <article
+    role="region"
+    [style.display]="accordionItem1.expanded ? '' : 'none'"
+    [attr.id]="'accordion-body-' + '4'"
+    [attr.aria-labelledby]="'accordion-header-' + '4'">
+    <p class="pt-4 text-2xl font-medium text-center text-accent">
+      Database Stats
+    </p>
+    <section class="flex justify-center p-4">
+      <table>
+        <tr>
+          <td>Database</td>
+          <td>inventory-system.fdb</td>
+        </tr>
+        <tr>
+          <td>Flags</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Checksum</td>
+          <td>12345</td>
+        </tr>
+        <tr>
+          <td>Generation</td>
+          <td>184</td>
+        </tr>
+        <tr>
+          <td>Page size</td>
+          <td>4096</td>
+        </tr>
+        <tr>
+          <td>ODS version</td>
+          <td>11.1</td>
+        </tr>
+        <tr>
+          <td>Oldest transaction</td>
+          <td>166</td>
+        </tr>
+        <tr>
+          <td>Oldest active</td>
+          <td>167</td>
+        </tr>
+        <tr>
+          <td>Oldest snapshot</td>
+          <td>167</td>
+        </tr>
+        <tr>
+          <td>Next transaction</td>
+          <td>170</td>
+        </tr>
+        <tr>
+          <td>Bumped transaction</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Sequence number</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Next attachment ID</td>
+          <td>68</td>
+        </tr>
+        <tr>
+          <td>Implementation ID</td>
+          <td>19</td>
+        </tr>
+        <tr>
+          <td>Shadow count</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Page buffers</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Next header page</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Database dialect</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>Creation date</td>
+          <td>Sep 25, 2009 12:50:24</td>
+        </tr>
+        <tr>
+          <td>Attributtes</td>
+          <td>multi-user maintenance</td>
+        </tr>
+      </table>
+    </section>
+  </article>
+</cdk-accordion-item>
+
+<!-- AQUI EL CODIGO STATS -->

@@ -3,10 +3,8 @@ import { Routes } from '@angular/router';
 export const appRoutes: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('@pages/analitics/analitics.component').then(
-        c => c.AnaliticsComponent
-      ),
+    redirectTo: 'database',
+    pathMatch: 'full',
   },
   {
     path: 'database',

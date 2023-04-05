@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatabaseConnectComponent } from './database-connect.component';
+import { DatabaseConnectComponent } from './database-initial.component';
 
 describe('DatabaseConnectComponent', () => {
   let component: DatabaseConnectComponent;
