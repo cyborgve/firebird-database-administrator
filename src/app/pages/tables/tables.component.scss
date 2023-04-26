@@ -16,3 +16,7 @@ mat-button-toggle {
 mat-button-toggle-group {
   border-left: 1px solid #e65100;
 }
+
+.button-toggle {
+  @apply pr-4 text-2xl italic text-primary;
+}
